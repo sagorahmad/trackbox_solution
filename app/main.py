@@ -1,16 +1,17 @@
 from app.config import PipelineConfig
+from app.pipeline.runner import PipelineRunner
 
 
 def main():
 
     config = PipelineConfig()
 
-    print("TrackBox pipeline configuration loaded successfully.")
+    runner = PipelineRunner(config)
+
+    results = runner.run()
 
     print(
-        f"Video path: {config.video_path}, "
-        f"Target FPS: {config.target_fps}, "
-        f"Job ID: {config.job_id}"
+        f"Pipeline completed. Results: {len(results)}"
     )
 
 
