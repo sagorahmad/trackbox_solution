@@ -1,3 +1,4 @@
+import os
 from pydantic import BaseModel, Field
 
 
@@ -14,7 +15,10 @@ class CropSearchConfig(BaseModel):
 
 class PipelineConfig(BaseModel):
 
-    reporting_url: str = "http://localhost:5000"
+    reporting_url: str = os.getenv(
+        "MOCK_API_URL",
+        "http://localhost:5000"
+    )
 
     video_path: str = "synthetic_pitch_feed.mp4"
 
@@ -26,7 +30,10 @@ class PipelineConfig(BaseModel):
         le=1.0
     )
 
-    job_id: str = "job-synthetic-001"
+    job_id: str = os.getenv(
+        "JOB_ID",
+        "job-synthetic-001"
+    )
 
     frame_interval: int = Field(
         default=30,
