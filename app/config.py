@@ -14,6 +14,8 @@ class CropSearchConfig(BaseModel):
 
 class PipelineConfig(BaseModel):
 
+    reporting_url: str = "http://localhost:5000"
+
     video_path: str = "synthetic_pitch_feed.mp4"
 
     target_fps: int = Field(default=30, gt=0)

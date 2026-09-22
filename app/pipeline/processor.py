@@ -64,4 +64,7 @@ class VideoProcessor:
         )
 
 
-        return detections
+        return {
+            "total_frames": frame_number,
+            "detections": detections
+        }

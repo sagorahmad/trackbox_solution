@@ -1,9 +1,11 @@
 import cv2
 import numpy as np
+import logging
 
 from shapely.geometry import Polygon
-
 from app.detector.base import FieldDetector
+
+logger = logging.getLogger(__name__)
 
 
 class SamMockDetector(FieldDetector):
@@ -80,9 +82,9 @@ class SamMockDetector(FieldDetector):
 
 
         except Exception as error:
-
-            print(
-                f"Polygon extraction failed: {error}"
+            logger.error(
+                "Polygon extraction failed",
+                exc_info=True
             )
 
             return None
